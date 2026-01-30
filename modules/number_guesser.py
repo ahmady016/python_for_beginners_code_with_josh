@@ -14,19 +14,21 @@ print("----------------------")
 winning_number = randint(1, 100)
 user_name = input("Enter your name: ").upper()
 user_number = int(input("Enter a number between 1 and 100: "))
-guess_count = 1
+user_tries = 1
 ################################################################
 while user_number != winning_number:
     print("-------------------------")
     if user_number > winning_number:
         print("Too High, try again")
+        print("-------------------")
     else:
         print("Too Low, try again")
+        print("------------------")
     user_number = int(input("Enter a number between 1 and 100: "))
-    guess_count += 1
+    user_tries += 1
 ################################################################
-print(f"Congratulations {user_name}, You guessed the right number in #{guess_count} tries")
 print("----------------------")
-
+print(f"Congratulations {user_name}, You guessed the right number in #{user_tries} tries")
 print("Number Guesser Program Completed Successfully")
 print("----------------------")
+################################################################
