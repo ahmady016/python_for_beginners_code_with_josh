@@ -42,10 +42,25 @@ print("###############################################")
 print("HTTP Errors Mapper Program Started Successfully")
 print("###############################################")
 #########################################################################################
-codes = list(set(choices(list(ERROR_MAP.keys()), k=randint(5, 10))))
+# extract the mapped and unmapped http error codes from all codes range 400 to 600
+all_codes = set(range(400, 600))
+mapped_codes = set(ERROR_MAP)
+unmapped_codes = all_codes - mapped_codes
+
+# get a random number of mapped and unmapped http error codes
+mapped_codes_choices = choices(list(mapped_codes), k=randint(7, 10))
+unmapped_codes_choices = choices(list(unmapped_codes), k=randint(3, 5))
+
+# remove duplicate choices and combine the mapped and unmapped http error codes
+codes = set(mapped_codes_choices) | set(unmapped_codes_choices)
+
+# loop through the chosen codes and print corresponding error message from the error map
 for status_code in codes:
-    ErrorClass, error_message = ERROR_MAP.get(status_code)
-    print(ErrorClass(error_message))
+    if status_code in ERROR_MAP:
+        ErrorClass, error_message = ERROR_MAP.get(status_code)
+        print(ErrorClass(error_message))
+    else:
+        print(HttpError(status_code, "HTTP Error", "Opps, something went wrong"))
 #########################################################################################
 print("#################################################")
 print("HTTP Errors Mapper Program Completed Successfully")
