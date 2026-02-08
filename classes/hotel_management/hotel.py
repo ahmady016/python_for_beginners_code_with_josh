@@ -128,9 +128,8 @@ class Hotel:
     def get_sorted_guests_info(self):
         if not self.guests:
             return "There is no guest in this hotel"
-        all_guests = [guest_details for guest_details in self.guests.values()]
-        all_guests.sort(key=lambda guest_info: guest_info["score"], reverse=True)
-        return [self.get_guest_info(guest_info.get("guest").id) for guest_info in all_guests]
+        all_guests_details = sorted(self.guests.values(), key=lambda guest_info: guest_info["score"], reverse=True)
+        return [self.get_guest_info(guest_details.get("guest").id) for guest_details in all_guests_details]
 
     def get_all_guests_info(self):
         if not self.guests:
