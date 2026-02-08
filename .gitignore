@@ -1,0 +1,51 @@
+# Byte-compiled / optimized / compressed files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.whl
+
+# Temporary files, caches, and logs
+.Python
+build/
+develop-eggs/
+dist/
+eggs/
+*.egg-info/
+.coverage
+.tox/
+.nox/
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.log
+*.sai
+*.sao
+*.swp
+.ipynb_checkpoints
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Environment configuration files
+.flaskenv
+.pypirc
+.project
+secrets.toml
+debug.log
+
+# IDE-specific files (optional, can be in a global gitignore)
+.idea/  # For PyCharm
+.vscode/ # For VS Code
+*.iml   # For PyDev or other IDEs
+.DS_Store # For macOS
+Thumbs.db # For Windows
+
+# Jupyter Notebook files (optional)
+.ipynb_checkpoints
