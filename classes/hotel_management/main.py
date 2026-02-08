@@ -124,46 +124,46 @@ print(f"Average Guests Spent: {hotel_01.get_average_guests_spent()}")
 print(f"Average Guests Score: {hotel_01.get_average_guests_score()}")
 print("-------------------------")
 
-all_guests_info = hotel_01.get_all_guests_info()
-all_guests_info = "\n".join(all_guests_info) if type(all_guests_info) == list else all_guests_info
 print("All Guests Info:")
 print("-------------------------")
-print(all_guests_info)
+all_guests_info = hotel_01.get_all_guests_info()
+print("\n".join(all_guests_info))
 print("-------------------------")
 
-sorted_guests = hotel_01.get_sorted_guests_info()
-sorted_guests = "\n".join(sorted_guests) if type(sorted_guests) == list else sorted_guests
 print("Sorted Guests:")
 print("-------------------------")
-print(sorted_guests)
+sorted_guests = hotel_01.get_sorted_guests_info()
+print("\n".join(sorted_guests))
 print("-------------------------")
 
-all_bronze_guests_info = hotel_01.get_all_guests_info_by_tier("Bronze")
-all_bronze_guests_info = "\n".join(all_bronze_guests_info) if type(all_bronze_guests_info) == list else all_bronze_guests_info
+print("Top 3 Guests Info:")
+print("-------------------------")
+top3_guests_info = hotel_01.get_top_scored_guests_info(3)
+print("\n".join(top3_guests_info))
+print("-------------------------")
+
 print("All Bronze Guests Info:")
 print("-------------------------")
-print(all_bronze_guests_info)
+all_bronze_guests_info = hotel_01.get_all_guests_info_by_tier("Bronze")
+print("\n".join(all_bronze_guests_info))
 print("-------------------------")
 
-all_silver_guests_info = hotel_01.get_all_guests_info_by_tier("Silver")
-all_silver_guests_info = "\n".join(all_silver_guests_info) if type(all_silver_guests_info) == list else all_silver_guests_info
 print("All Silver Guests Info:")
 print("-------------------------")
-print(all_silver_guests_info)
+all_silver_guests_info = hotel_01.get_all_guests_info_by_tier("Silver")
+print("\n".join(all_silver_guests_info))
 print("-------------------------")
 
-all_gold_guests_info = hotel_01.get_all_guests_info_by_tier("Gold")
-all_gold_guests_info = "\n".join(all_gold_guests_info) if type(all_gold_guests_info) == list else all_gold_guests_info
 print("All Gold Guests Info:")
 print("-------------------------")
-print(all_gold_guests_info)
+all_gold_guests_info = hotel_01.get_all_guests_info_by_tier("Gold")
+print("\n".join(all_gold_guests_info))
 print("-------------------------")
 
-all_platinum_guests_info = hotel_01.get_all_guests_info_by_tier("Platinum")
-all_platinum_guests_info = "\n".join(all_platinum_guests_info) if type(all_platinum_guests_info) == list else all_platinum_guests_info
 print("All Platinum Guests Info:")
 print("-------------------------")
-print(all_platinum_guests_info)
+all_platinum_guests_info = hotel_01.get_all_guests_info_by_tier("Platinum")
+print("\n".join(all_platinum_guests_info))
 print("-------------------------")
 ###############################################################################
 print("-------------------------")
@@ -172,25 +172,22 @@ print("-------------------------")
 print(hotel_02[guest_08.id])
 print("-------------------------")
 
-all_guests_info = hotel_02.get_all_guests_info()
-all_guests_info = "\n".join(all_guests_info) if type(all_guests_info) == list else all_guests_info
 print("All Guests Info:")
 print("-------------------------")
-print(all_guests_info)
+all_guests_info = hotel_02.get_all_guests_info()
+print("\n".join(all_guests_info))
 print("-------------------------")
 
-all_silver_guests_info = hotel_02.get_all_guests_info_by_tier("Silver")
-all_silver_guests_info = "\n".join(all_silver_guests_info) if type(all_silver_guests_info) == list else all_silver_guests_info
 print("All Silver Guests Info:")
 print("-------------------------")
-print(all_silver_guests_info)
+all_silver_guests_info = hotel_02.get_all_guests_info_by_tier("Silver")
+print("\n".join(all_silver_guests_info))
 print("-------------------------")
 
-all_gold_guests_info = hotel_02.get_all_guests_info_by_tier("Gold")
-all_gold_guests_info = "\n".join(all_gold_guests_info) if type(all_gold_guests_info) == list else all_gold_guests_info
 print("All Gold Guests Info:")
 print("-------------------------")
-print(all_gold_guests_info)
+all_gold_guests_info = hotel_02.get_all_guests_info_by_tier("Gold")
+print("\n".join(all_gold_guests_info))
 print("-------------------------")
 ###############################################################################
 print("-------------------------")
@@ -199,25 +196,22 @@ print("-------------------------")
 print(hotel_03[guest_13.id])
 print("-------------------------")
 
-all_guests_info = hotel_03.get_all_guests_info()
-all_guests_info = "\n".join(all_guests_info) if type(all_guests_info) == list else all_guests_info
 print("All Guests Info:")
 print("-------------------------")
-print(all_guests_info)
+all_guests_info = hotel_03.get_all_guests_info()
+print("\n".join(all_guests_info))
 print("-------------------------")
 
-all_bronze_guests_info = hotel_03.get_all_guests_info_by_tier("Bronze")
-all_bronze_guests_info = "\n".join(all_bronze_guests_info) if type(all_bronze_guests_info) == list else all_bronze_guests_info
 print("All Bronze Guests Info:")
 print("-------------------------")
-print(all_bronze_guests_info)
+all_bronze_guests_info = hotel_03.get_all_guests_info_by_tier("Bronze")
+print("\n".join(all_bronze_guests_info))
 print("-------------------------")
 
-all_silver_guests_info = hotel_03.get_all_guests_info_by_tier("Silver")
-all_silver_guests_info = "\n".join(all_silver_guests_info) if type(all_silver_guests_info) == list else all_silver_guests_info
 print("All Silver Guests Info:")
 print("-------------------------")
-print(all_silver_guests_info)
+all_silver_guests_info = hotel_03.get_all_guests_info_by_tier("Silver")
+print("\n".join(all_silver_guests_info))
 print("-------------------------")
 ###############################################################################
 print("-------------------------")
@@ -226,25 +220,22 @@ print("-------------------------")
 print(hotel_03[guest_13.id])
 print("-------------------------")
 
-all_guests_info = hotel_03.get_all_guests_info()
-all_guests_info = "\n".join(all_guests_info) if type(all_guests_info) == list else all_guests_info
 print("All Guests Info:")
 print("-------------------------")
-print(all_guests_info)
+all_guests_info = hotel_03.get_all_guests_info()
+print("\n".join(all_guests_info))
 print("-------------------------")
 
-all_bronze_guests_info = hotel_03.get_all_guests_info_by_tier("Bronze")
-all_bronze_guests_info = "\n".join(all_bronze_guests_info) if type(all_bronze_guests_info) == list else all_bronze_guests_info
 print("All Bronze Guests Info:")
 print("-------------------------")
-print(all_bronze_guests_info)
+all_bronze_guests_info = hotel_03.get_all_guests_info_by_tier("Bronze")
+print("\n".join(all_bronze_guests_info))
 print("-------------------------")
 
-all_silver_guests_info = hotel_03.get_all_guests_info_by_tier("Silver")
-all_silver_guests_info = "\n".join(all_silver_guests_info) if type(all_silver_guests_info) == list else all_silver_guests_info
 print("All Silver Guests Info:")
 print("-------------------------")
-print(all_silver_guests_info)
+all_silver_guests_info = hotel_03.get_all_guests_info_by_tier("Silver")
+print("\n".join(all_silver_guests_info))
 print("-------------------------")
 ###############################################################################
 print("-------------------------")
@@ -253,24 +244,21 @@ print("-------------------------")
 print(hotel_04[guest_16.id])
 print("-------------------------")
 
-all_guests_info = hotel_04.get_all_guests_info()
-all_guests_info = "\n".join(all_guests_info) if type(all_guests_info) == list else all_guests_info
 print("All Guests Info:")
 print("-------------------------")
-print(all_guests_info)
+all_guests_info = hotel_04.get_all_guests_info()
+print("\n".join(all_guests_info))
 print("-------------------------")
 
-all_gold_guests_info = hotel_04.get_all_guests_info_by_tier('Gold')
-all_gold_guests_info = "\n".join(all_gold_guests_info) if type(all_gold_guests_info) == list else all_gold_guests_info
 print("All Gold Guests Info:")
 print("-------------------------")
-print(all_gold_guests_info)
+all_gold_guests_info = hotel_04.get_all_guests_info_by_tier('Gold')
+print("\n".join(all_gold_guests_info))
 print("-------------------------")
 
-all_silver_guests_info = hotel_04.get_all_guests_info_by_tier('Silver')
-all_silver_guests_info = "\n".join(all_silver_guests_info) if type(all_silver_guests_info) == list else all_silver_guests_info
 print("All Silver Guests Info:")
 print("-------------------------")
-print(all_silver_guests_info)
+all_silver_guests_info = hotel_04.get_all_guests_info_by_tier('Silver')
+print("\n".join(all_silver_guests_info))
 print("-------------------------")
 ###############################################################################

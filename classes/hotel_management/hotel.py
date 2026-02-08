@@ -98,13 +98,6 @@ class Hotel:
         all_guests_score = [guest_details.get("score") for guest_details in self.guests.values()]
         return round(sum(all_guests_score) / len(self.guests), 2)
 
-    def get_guest_info(self, guest_id):
-        if guest_id in self:
-            guest_details = self.guests[guest_id]
-            guest = guest_details.get("guest")
-            return f"{guest.get_full_name()} is {guest.gender}, {guest.age} years old, stayed {guest_details.get('nights')} nights, spent ${guest_details.get('spent')}, score {guest_details.get('score')} points, obtained {guest_details.get('tier')} tier and he is {'checked in' if guest_details.get('checked_status') else 'checked out'}"
-        return f"{guest_id} is not checked in this hotel"
-
     def get_guests_by_tier(self, tier):
         tier_guest_list = [guest_details for guest_details in self.guests.values() if guest_details.get("tier") == tier]
         return tier_guest_list if tier_guest_list else "There is no guest with this tier in this hotel"
@@ -125,24 +118,38 @@ class Hotel:
         all_guests = [guest_details for guest_details in self.guests.values()]
         return all_guests if all_guests else "There is no guest in this hotel"
 
+    def get_guest_info(self, guest_id):
+        if guest_id not in self:
+            return f"{guest_id} is not checked in this hotel"
+        guest_details = self.guests[guest_id]
+        guest = guest_details.get("guest")
+        return f"{guest.get_full_name()} is {guest.gender}, {guest.age} years old, stayed {guest_details.get('nights')} nights, spent ${guest_details.get('spent')}, score {guest_details.get('score')} points, obtained {guest_details.get('tier')} tier and he is {'checked in' if guest_details.get('checked_status') else 'checked out'}"
+
+    def get_all_guests_info(self):
+        if not self:
+            print("There is no guest in this hotel")
+        return [self.get_guest_info(guest_id) for guest_id in self]
+
     def get_sorted_guests_info(self):
-        if not self.guests:
-            return "There is no guest in this hotel"
+        if not self:
+            print("There is no guest in this hotel")
         all_guests_details = sorted(self.guests.values(), key=lambda guest_info: guest_info["score"], reverse=True)
         return [self.get_guest_info(guest_details.get("guest").id) for guest_details in all_guests_details]
 
-    def get_all_guests_info(self):
-        if not self.guests:
-            return "There is no guest in this hotel"
-        return [self.get_guest_info(guest_id) for guest_id in self.guests.keys()]
+    def get_top_scored_guests_info(self, limit=5):
+        return self.get_sorted_guests_info()[:limit]
 
     def get_all_guests_info_by_tier(self, tier):
         all_guests_info = [self.get_guest_info(guest_id) for guest_id in self.guests.keys() if self.guests[guest_id].get("tier") == tier]
-        return all_guests_info if all_guests_info else "There is no guest with this tier in this hotel"
+        if not all_guests_info:
+            print("There is no guest with this tier in this hotel")
+        return all_guests_info
 
     def get_all_guests_info_by_rank(self, rank):
         all_guests_info = [self.get_guest_info(guest_id) for guest_id in self.guests.keys() if self.guests[guest_id].get("score") == rank]
-        return all_guests_info if all_guests_info else "There is no guest with this rank in this hotel"
+        if not all_guests_info:
+            print("There is no guest with this rank in this hotel")
+        return all_guests_info
 
     def __str__(self):
         return f"""Hotel Details:
