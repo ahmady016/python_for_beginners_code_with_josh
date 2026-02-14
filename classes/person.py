@@ -33,27 +33,11 @@ class Person:
         ### public fields (computed properties) ### can be accessed from outside
         self.bio = self.__repr__()
         self.details = self.__str__()
-        ### private fields (used by setter and getter) ### can not be accessed from outside
-        self.__full_name = self.full_name
-        self.__generation = self.generation
-        self.__age = self.age
-        self.__bmi = self.bmi
 
-    ### setter and getter for backing fields ###
+    ### computed properties (this fields is calculated on the fly and is read-only) ###
     @property
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
-    @full_name.setter
-    def full_name(self, value):
-        self.__full_name = value
-
-    @property
-    def bmi(self):
-        return self.weight / (self.height / 100) ** 2
-    @bmi.setter
-    def bmi(self, value):
-        self.__bmi = value
-
     @property
     def generation(self):
         if self.birth_year >= 1965 and self.birth_year <= 1980:
@@ -66,16 +50,12 @@ class Person:
             return "Gen Alpha"
         else:
             return "Gen Beta"
-    @generation.setter
-    def generation(self, value):
-        self.__generation = value
-
+    @property
+    def bmi(self):
+        return self.weight / (self.height / 100) ** 2
     @property
     def age(self):
         return date.today().year - self.birth_year
-    @age.setter
-    def age(self, value):
-        self.__age = value
 
     ### class methods ###
     def print_details(self):
@@ -158,13 +138,6 @@ yasser = Person(
 persons_list = [omar, sayed, yasser]
 print("----------------------------------")
 print(f"number of persons: {Person.persons_count}")
-print("----------------------------------")
-print("omar details: using the mangled backing fields")
-print("----------------------------------")
-print(f"omar name: {omar._Person__full_name}")
-print(f"omar generation: {omar._Person__generation}")
-print(f"omar age: {omar._Person__age}")
-print(f"omar bmi: {omar._Person__bmi:.2f}")
 print("----------------------------------")
 print(sayed.__repr__())
 print("----------------------------------")
