@@ -15,7 +15,9 @@
 from datetime import date
 ###############################################################################
 class Person:
+    ### class fields (counter) ###
     persons_count = 0
+    ### class constructor ###
     def __init__(self, first_name, last_name, birth_year, height=175, weight=75, gender="male", city="cairo", bank_balance=0.0):
         Person.persons_count += 1
         self.id = Person.persons_count
@@ -27,18 +29,33 @@ class Person:
         self.gender = gender
         self.city = city
         self.bank_balance = bank_balance
+
+        ### public fields (computed properties) ### can be accessed from outside
         self.bio = self.__repr__()
+        self.details = self.__str__()
+        ### private fields (used by setter and getter) ### can not be accessed from outside
+        self.__full_name = self.full_name
+        self.__generation = self.generation
+        self.__age = self.age
+        self.__bmi = self.bmi
 
-    def get_full_name(self):
+    ### setter and getter for backing fields ###
+    @property
+    def full_name(self):
         return f"{self.first_name} {self.last_name}"
+    @full_name.setter
+    def full_name(self, value):
+        self.__full_name = value
 
-    def get_bmi(self):
+    @property
+    def bmi(self):
         return self.weight / (self.height / 100) ** 2
+    @bmi.setter
+    def bmi(self, value):
+        self.__bmi = value
 
-    def get_age(self):
-        return date.today().year - self.birth_year
-
-    def get_generation(self):
+    @property
+    def generation(self):
         if self.birth_year >= 1965 and self.birth_year <= 1980:
             return "Gen X"
         elif self.birth_year >= 1981 and self.birth_year <= 1996:
@@ -49,33 +66,45 @@ class Person:
             return "Gen Alpha"
         else:
             return "Gen Beta"
+    @generation.setter
+    def generation(self, value):
+        self.__generation = value
 
-    def print_person_details(self):
+    @property
+    def age(self):
+        return date.today().year - self.birth_year
+    @age.setter
+    def age(self, value):
+        self.__age = value
+
+    ### class methods ###
+    def print_details(self):
         print(f"Person_#{self.id}_Details:")
         print("-------------------------")
-        print(f"Full Name: {self.get_full_name()}")
+        print(f"Full Name: {self.full_name}")
         print(f"Birth Year: {self.birth_year}")
-        print(f"Age: {self.get_age()}")
-        print(f"Generation: {self.get_generation()}")
+        print(f"Generation: {self.generation}")
+        print(f"Age: {self.age}")
+        print(f"BMI: {self.bmi:.2f}")
+        print(f"Gender: {self.gender}")
         print(f"Height: {self.height}")
         print(f"Weight: {self.weight}")
-        print(f"BMI: {self.get_bmi():.2f}")
-        print(f"Gender: {self.gender}")
         print(f"City: {self.city}")
         print(f"Bank Balance: {self.bank_balance}")
         print("-------------------------")
 
     def __repr__(self):
-        return f"Person_#{self.id}: {self.first_name} {self.last_name} is {self.get_age()} years old and he is {self.gender} from {self.city} and has a money balance of {self.bank_balance}"
+        return f"Person_#{self.id}: {self.full_name} is {self.age} years old and he is {self.gender} from {self.city} and has a money balance of {self.bank_balance}"
     def __str__(self):
         return f"""Person_#{self.id}_Details:
-            Name: {self.get_full_name()}
+            Name: {self.full_name}
+            Generation: {self.generation}
+            Age: {self.age}
+            BMI: {self.bmi:.2f}
             Gender: {self.gender}
             City: {self.city}
-            BMI: {self.get_bmi():.2f}
-            Age: {self.get_age()}
-            Generation: {self.get_generation()}
             Bank Balance: {self.bank_balance}"""
+
     def __eq__(self, other):
         if isinstance(other, Person):
             return self.gender == other.gender and self.birth_year == other.birth_year and self.height == other.height and self.weight == other.weight
@@ -130,11 +159,14 @@ persons_list = [omar, sayed, yasser]
 print("----------------------------------")
 print(f"number of persons: {Person.persons_count}")
 print("----------------------------------")
-print(omar)
+print("omar details: using the mangled backing fields")
 print("----------------------------------")
-print(sayed)
+print(f"omar name: {omar._Person__full_name}")
+print(f"omar generation: {omar._Person__generation}")
+print(f"omar age: {omar._Person__age}")
+print(f"omar bmi: {omar._Person__bmi:.2f}")
 print("----------------------------------")
-print(yasser)
+print(sayed.__repr__())
 print("----------------------------------")
 print(f"does omar and sayed is the same? {omar == sayed}")
 print("----------------------------------")
@@ -142,11 +174,11 @@ print(f"does omar and yasser is the same? {omar == yasser}")
 print("----------------------------------")
 print(f"does sayed and yasser is the same? {sayed == yasser}")
 print("----------------------------------")
-yasser.print_person_details()
+yasser.print_details()
 print("----------------------------------")
-print("Persons List:")
+print("Persons details:")
 print("----------------------------------")
-print(persons_list)
+print("\n".join([person.details for person in persons_list]))
 print("----------------------------------")
 print("Persons Bio:")
 print("----------------------------------")
