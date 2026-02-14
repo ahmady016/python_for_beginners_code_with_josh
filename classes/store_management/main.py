@@ -29,7 +29,7 @@
 # get a list of all orders in the store by specific customer
 ######################################################################################
 from random import randint, choice, choices
-from helpers import random_date_between, get_zero_formatted_number
+from helpers import get_random_date_between, get_zero_formatted_number
 from customer import Customer
 from product import Product
 from store import Store
@@ -69,7 +69,7 @@ for product in products[10:]:
 # add 3 orders with random customer, product, quantity and unit price to each store
 for store in [raya_store, zen_store]:
     for customer in [ahmed, sayed, eman]:
-        order = Order(store, customer, random_date_between("01-01-2024", "31-12-2025"))
+        order = Order(store, customer, get_random_date_between("01-01-2024", "31-12-2025"))
         store_products = [productInfo["product"] for productInfo in store.products.values()]
         for product in choices(store_products, k=randint(3, 7)):
             order.add_item(product, randint(1, 10), randint(10, 1000))
@@ -95,16 +95,28 @@ print("all toys products in the raya store")
 print("-------------------------")
 print(raya_store.get_category_products_info("toys"))
 ######################################################################################
-# get a list of all orders in the store
+# get a list of all orders in the raya store
 print("all orders in the raya store")
 print("-------------------------")
 for order in raya_store.get_orders():
     print(order)
 ######################################################################################
 # get a list of all orders in the store by specific customer
-print("all orders for ahmed in the raya store")
+print("all orders for sayed in the raya store")
 print("-------------------------")
 for order in raya_store.get_customer_orders(sayed.id):
+    print(order)
+######################################################################################
+# get a list of all orders in the zen store
+print("all orders in the zen store")
+print("-------------------------")
+for order in zen_store.get_orders():
+    print(order)
+######################################################################################
+# get a list of all orders in the zen store by specific customer
+print("all orders for ahmed in the zen store")
+print("-------------------------")
+for order in raya_store.get_customer_orders(ahmed.id):
     print(order)
 ######################################################################################
 print("############################")
