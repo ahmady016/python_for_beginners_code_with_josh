@@ -69,11 +69,17 @@ for product in products[10:]:
 # add 3 orders with random customer, product, quantity and unit price to each store
 for store in [raya_store, zen_store]:
     for customer in [ahmed, sayed, eman]:
+        ### create new order for the store and customer with random purchase date
         order = Order(store, customer, get_random_date_between("01-01-2024", "31-12-2025"))
+        ### add random items from the products of the store in the order
         store_products = [productInfo["product"] for productInfo in store.products.values()]
         for product in choices(store_products, k=randint(3, 7)):
             order.add_item(product, randint(1, 10), randint(10, 1000))
+        ### add the order to the store
         store.add_order(order)
+        ### print the order
+        print(order.__repr__())
+        print("-------------------------")
 ######################################################################################
 # get a list of all products in the store
 print("all products in the raya store")
