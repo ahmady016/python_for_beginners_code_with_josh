@@ -9,23 +9,26 @@ class Order:
         self.customer = customer
         self.purchase_date = purchase_date
         self.order_items = {}
-        ### backing fields for getters and setters (computed properties)
-        self._total_cost = 0.0
-        self._average_cost = 0.0
+        ### backing fields for getters and setters
+        ### (computed properties when adding or updating or removing items)
+        self.__total_cost = 0.0
+        self.__average_cost = 0.0
 
     @property
     def total_cost(self):
-        return sum(item["total_price"] for item in self.order_items.values()) if len(self) > 0 else 0
+        return self.__total_cost
+        # return sum(item["total_price"] for item in self.order_items.values()) if len(self) > 0 else 0
     @total_cost.setter
     def total_cost(self, value):
-        self._total_cost = value
+        self.__total_cost = value
 
     @property
     def average_cost(self):
-        return round(self._total_cost / len(self), 2) if len(self) > 0 else 0
+        return round(self.__average_cost, 2)
+        # return round(self._total_cost / len(self), 2) if len(self) > 0 else 0
     @average_cost.setter
     def average_cost(self, value):
-        self._average_cost = value
+        self.__average_cost = value
 
     def has_items(self):
         return len(self.order_items) > 0
